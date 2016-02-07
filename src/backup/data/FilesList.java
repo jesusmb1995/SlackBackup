@@ -9,7 +9,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
- *  Copyright (c) 2015 Jesús Martín Berlanga. All rights reserved.
+ *  Copyright (c) 2015 Jesï¿½s Martï¿½n Berlanga. All rights reserved.
  *  SlackBackup is licensed under GNU General Public License (GPLv3)
  *  
  *  This file is part of SlackBackup.
@@ -27,7 +27,7 @@ import org.json.JSONObject;
  *  You should have received a copy of the GNU General Public License
  *  along with SlackBackup.  If not, see <http://www.gnu.org/licenses/>.
  *  
- *  @author Jesús Martín Berlanga
+ *  @author Jesï¿½s Martï¿½n Berlanga
  */
 public class FilesList {
 
@@ -45,7 +45,10 @@ public class FilesList {
 				File file = new File (
 								subObj.getString("id"),
 								subObj.has("name") ? subObj.getString("name") : null,
-								subObj.getString("url"),
+										
+								//subObj.getString("url"), //Deprecated: Use url_private and url_private_download instead
+								subObj.getString("url_private_download"),	
+								
 								subObj.getString("filetype"),
 								users.getUser(subObj.getString("user")),
 								subObj.getInt("size"));

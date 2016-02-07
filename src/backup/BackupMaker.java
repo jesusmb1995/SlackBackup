@@ -36,7 +36,7 @@ import utils.URLReader;
 import utils.ZipUtils;
 
 /**
- *  Copyright (c) 2015 Jesús Martín Berlanga. All rights reserved.
+ *  Copyright (c) 2015 Jesï¿½s Martï¿½n Berlanga. All rights reserved.
  *  SlackBackup is licensed under GNU General Public License (GPLv3)
  *  
  *  This file is part of SlackBackup.
@@ -54,7 +54,7 @@ import utils.ZipUtils;
  *  You should have received a copy of the GNU General Public License
  *  along with SlackBackup.  If not, see <http://www.gnu.org/licenses/>.
  *  
- *  @author Jesús Martín Berlanga
+ *  @author Jesï¿½s Martï¿½n Berlanga
  */
 public class BackupMaker {
 
@@ -234,7 +234,8 @@ public class BackupMaker {
 			System.out.println("\tEX_NOINPUT\t(66),\tcan not read the input folder");
 			System.out.println("\tEX_SOFTWARE\t(70),\terror while processing data from server");
 			System.out.println("\tEX_IOERR\t(74),\terror trying to write or read\n\n");
-		System.out.println("SlackBackup (c) by Jesús Martín Berlanga\n");
+		System.out.println("Version: 1.1");
+		System.out.println("SlackBackup (c) by Jesï¿½s Martï¿½n Berlanga\n");
 		System.out.println("SlackBackup is licensed is licensed under");
 		System.out.println("GNU General Public License (GPLv3).\n\n");
 		System.out.println("http://slackbackup.bdevel.org");
