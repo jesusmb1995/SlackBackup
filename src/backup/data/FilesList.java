@@ -9,7 +9,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
- *  Copyright (c) 2015 Jes�s Mart�n Berlanga. All rights reserved.
+ *  Copyright (c) 2015 Jesús Martín Berlanga. All rights reserved.
  *  SlackBackup is licensed under GNU General Public License (GPLv3)
  *  
  *  This file is part of SlackBackup.
@@ -27,7 +27,7 @@ import org.json.JSONObject;
  *  You should have received a copy of the GNU General Public License
  *  along with SlackBackup.  If not, see <http://www.gnu.org/licenses/>.
  *  
- *  @author Jes�s Mart�n Berlanga
+ *  @author Jesús Martín Berlanga
  */
 public class FilesList {
 
