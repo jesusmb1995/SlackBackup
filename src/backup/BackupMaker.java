@@ -36,7 +36,7 @@ import utils.URLReader;
 import utils.ZipUtils;
 
 /**
- *  Copyright (c) 2015 Jesús Martín Berlanga. All rights reserved.
+ *  Copyright (c) 2015-2016 Jesús Martín Berlanga. All rights reserved.
  *  SlackBackup is licensed under GNU General Public License (GPLv3)
  *  
  *  This file is part of SlackBackup.
@@ -91,7 +91,7 @@ public class BackupMaker {
 					initializeNegateTypes(args[4].charAt(0));
 					types = args[4].substring(1).split("\\|");
 				}
-				filterBySize = Integer.parseInt(args[5], 10);
+				filterBySize =  args[5].equals("none") ? null : Integer.parseInt(args[5], 10);
 			}
 			
 			int nArgs;
@@ -235,7 +235,7 @@ public class BackupMaker {
 			System.out.println("\tEX_SOFTWARE\t(70),\terror while processing data from server");
 			System.out.println("\tEX_IOERR\t(74),\terror trying to write or read\n\n");
 		System.out.println("Version: 1.1");
-		System.out.println("SlackBackup (c) by Jes�s Mart�n Berlanga\n");
+		System.out.println("SlackBackup (c) 2015-2016 by Jesús Martín Berlanga\n");
 		System.out.println("SlackBackup is licensed is licensed under");
 		System.out.println("GNU General Public License (GPLv3).\n\n");
 		System.out.println("http://slackbackup.bdevel.org");
@@ -317,7 +317,7 @@ public class BackupMaker {
 				String fileEntry = provideFileEntry(addedEntries, file.getName());
 				System.out.println(	"\t\t["+ i++ +"/"+files.getFiles().size()
 									+"]\t" + fileEntry);
-				byte[] data = URLReader.getFileAsByteArray(file.getUrl(), file.getSize());
+				byte[] data = URLReader.getFileAsByteArray(file.getUrl(), file.getSize(), config.token.getKey());
 				ZipUtils.storeData(out, "files/"+files.getOwner().getName()+"/"+fileEntry, data, data.length);
 			}
 		}

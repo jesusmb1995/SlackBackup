@@ -5,10 +5,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URLConnection;
+
 import java.net.URL;
 
 /**
- *  Copyright (c) 2015 Jesús Martín Berlanga. All rights reserved.
+ *  Copyright (c) 2015-2016 JesÃºs MartÃ­n Berlanga. All rights reserved.
  *  SlackBackup is licensed under GNU General Public License (GPLv3)
  *  
  *  This file is part of SlackBackup.
@@ -26,7 +27,7 @@ import java.net.URL;
  *  You should have received a copy of the GNU General Public License
  *  along with SlackBackup.  If not, see <http://www.gnu.org/licenses/>.
  *  
- *  @author Jesús Martín Berlanga
+ *  @author JesÃºs MartÃ­n Berlanga
  */
 public class URLReader {
 	 public static String getUrlSource(String url) throws IOException {
@@ -43,9 +44,13 @@ public class URLReader {
          return a.toString();
      }
 	 
-	 public static byte[] getFileAsByteArray(String urlS, int size) throws IOException {
+	 public static byte[] getFileAsByteArray(String urlS, int size, String token) throws IOException {
 		 	URL url = new URL(urlS);
 		    URLConnection connection = url.openConnection();
+		    
+		    String oAuth = "Bearer " + token;
+		    connection.setRequestProperty("Authorization", oAuth);
+		    
 		    InputStream in = connection.getInputStream();
 		    ByteArrayOutputStream tmpOut = new ByteArrayOutputStream(size);
 		    

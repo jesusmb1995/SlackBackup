@@ -1,7 +1,7 @@
 package backup.data;
 
 /**
- *  Copyright (c) 2015 Jesús Martín Berlanga. All rights reserved.
+ *  Copyright (c) 2015-2016 JesÃºs MartÃ­n Berlanga. All rights reserved.
  *  SlackBackup is licensed under GNU General Public License (GPLv3)
  *  
  *  This file is part of SlackBackup.
@@ -19,7 +19,7 @@ package backup.data;
  *  You should have received a copy of the GNU General Public License
  *  along with SlackBackup.  If not, see <http://www.gnu.org/licenses/>.
  *  
- *  @author Jesús Martín Berlanga
+ *  @author JesÃºs MartÃ­n Berlanga
  */
 public class FileFilter {
 
@@ -49,8 +49,9 @@ public class FileFilter {
 	/**
 	 * @param maxSize Must be positive
 	 */
-	public void addFilter(long maxSize) {
-		this.maxSize = maxSize;
+	public void addFilter(Integer maxSize) {
+		if(maxSize != null)
+			this.maxSize = Long.valueOf(maxSize.intValue());
 	}
 	
 	public void addFilter(User user) {
@@ -61,8 +62,8 @@ public class FileFilter {
 	 * @return true If the file is OK
 	 */
 	public boolean accepted(File file) {	
-		return 		(maxSize != null &&							file.getSize() < maxSize			) 	&&
-					(types != null && negateTypes != null && 	acceptedType(file.getType())		)	;
+		return 		(maxSize == null ||							file.getSize() < maxSize			) 	&&
+					(types == null   || (negateTypes != null && 	acceptedType(file.getType())   ))	 ;
 	}
 	
 	private boolean acceptedType(String type) {
