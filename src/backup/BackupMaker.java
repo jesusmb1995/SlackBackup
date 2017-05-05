@@ -317,8 +317,12 @@ public class BackupMaker {
 				String fileEntry = provideFileEntry(addedEntries, file.getName());
 				System.out.println(	"\t\t["+ i++ +"/"+files.getFiles().size()
 									+"]\t" + fileEntry);
-				byte[] data = URLReader.getFileAsByteArray(file.getUrl(), file.getSize(), config.token.getKey());
-				ZipUtils.storeData(out, "files/"+files.getOwner().getName()+"/"+fileEntry, data, data.length);
+				try {
+					byte[] data = URLReader.getFileAsByteArray(file.getUrl(), file.getSize(), config.token.getKey());
+					ZipUtils.storeData(out, "files/"+files.getOwner().getName()+"/"+fileEntry, data, data.length);
+				} catch (IOException e) {
+					System.out.println("\t\tDownload failed! Continuing with next files...");
+				}
 			}
 		}
 	}
