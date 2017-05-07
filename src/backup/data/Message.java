@@ -44,15 +44,15 @@ public class Message {
 	 * @param user Token user
 	 */
 	public Message(JSONObject message, UsersList users, User user) {
-		if(message.has("user")) {
+		if(message.has("user") && !message.opt("user").equals(null)) {
 			String userId = message.getString("user");
 			this.user = userId.equals(user.getId()) ? user : users.getUser(userId);
 		} else
 			this.user = null;
-		this.text = message.has("text") ? message.getString("text"): null;
-		this.subtype = message.has("subtype") ? MessageSubtypes.getSubtype(message.getString("subtype")): null;
-		this.hidden = message.has("hidden") ? message.getBoolean("hidden") : false;
-		this.subMessage = message.has("message") ? new Message(message.getJSONObject("message"), users, user) : null;
+		this.text = message.has("text") && !message.opt("text").equals(null) ? message.getString("text"): null;
+		this.subtype = message.has("subtype") && !message.opt("subtype").equals(null) ? MessageSubtypes.getSubtype(message.getString("subtype")): null;
+		this.hidden = message.has("hidden") && !message.opt("hidden").equals(null) ? message.getBoolean("hidden") : false;
+		this.subMessage = message.has("message") && !message.opt("message").equals(null) ? new Message(message.getJSONObject("message"), users, user) : null;
 	}
 	
 	public boolean isHidden() {
