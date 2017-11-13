@@ -31,6 +31,12 @@ import java.net.URL;
  */
 public class URLReader {
 	 public static String getUrlSource(String url) throws IOException {
+         try {
+             Thread.sleep(1100); // Rate limited to 1 request per second, see https://api.slack.com/docs/rate-limits
+         } catch (InterruptedException e) {
+             throw new IOException("Interrupted by user");
+         }
+
 		 URL yahoo = new URL(url);
          URLConnection yc = yahoo.openConnection();
          BufferedReader in = new BufferedReader(new InputStreamReader(
@@ -45,6 +51,12 @@ public class URLReader {
      }
 	 
 	 public static byte[] getFileAsByteArray(String urlS, int size, String token) throws IOException {
+            try {
+                Thread.sleep(1100); // Rate limited to 1 request per second, see https://api.slack.com/docs/rate-limits
+            } catch (InterruptedException e) {
+                throw new IOException("Interrupted by user");
+            }
+
 		 	URL url = new URL(urlS);
 		    URLConnection connection = url.openConnection();
 		    
